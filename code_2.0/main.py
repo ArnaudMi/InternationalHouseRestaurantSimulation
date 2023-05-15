@@ -1,15 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from InternationalHouse import *
-
-N_STUDENT = 60
+MODE = 0
+N_STUDENT = 600
 SID = [30386*1000+i for i in range(600)]
 arrival_time_distrib : list = rd.gamma(shape=5, scale = 3600/5, size=N_STUDENT)
 arrival_time_distrib = sorted(arrival_time_distrib) 
-dining_hall = Dining_Hall()
+dining_hall = Dining_Hall(MODE)
 student_list :list[Student] = []
 for n in range(N_STUDENT) :
-    stud = Student(SID[n], dining_hall)
+    stud = Student(SID[n], dining_hall, dining_hall.mode)
     student_list.append(stud)
 student_counter = 0
 time = 0
